@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage/css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/calculator">Calculator</a>
+    </nav>
+    <main>
+        <h1>Welcome to the Homepage</h1>
+        <p>This is a Flask web application.</p>
+    </main>
+    <script src="{{ url_for('static', filename='homepage/js/script.js') }}"></script>
+</body>
+</html>
