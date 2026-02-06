@@ -1,21 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='homepage/css/style.css') }}">
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/calculator">Calculator</a>
-    </nav>
-    <main>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is a Flask web application.</p>
-    </main>
-    <script src="{{ url_for('static', filename='homepage/js/script.js') }}"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Portfolio</title>
+        <!-- Use the correct CSS file path -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='homepage/css/style.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Your HTML content here -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo">MyPortfolio</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/calculator">Calculator</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1>Hello, I'm {{ data.name }}</h1>
+            <p>Age: {{ data.age }}</p>
+            <p>Address: {{ data.address }}</p>
+            <p>School: {{ data.school }}</p>
+            <p>Grade: {{ data.grade }}</p>
+
+            <h2>Achievements</h2>
+            <ul>
+                {% for achievement in data.achievements %}
+                <li>{{ achievement }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Hobbies</h2>
+            <div class="tags">
+                {% for hobby in data.hobbies %}
+                <span class="tag">{{ hobby }}</span>
+                {% endfor %}
+            </div>
+
+            <h2>Interests</h2>
+            <div class="tags">
+                {% for interest in data.interests %}
+                <span class="tag">{{ interest }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Use the correct JS file path -->
+        <script src="{{ url_for('static', filename='homepage/js/script.js') }}"></script>
+    </body>
 </html>
