@@ -29,7 +29,7 @@ def homepage():
 
 @app.route('/blog')
 def blog():
-    return "Blog page coming soon!"
+    return render_template('blog/index.html')
 
 
 @app.route('/calculator')
@@ -48,3 +48,10 @@ if __name__ == '__main__':
     print("Blog: http://localhost:5000/blog")
     print("Calculator: http://localhost:5000/calculator")
     app.run(debug=True, port=5000, host='0.0.0.0')
+
+
+
+
+
+
+

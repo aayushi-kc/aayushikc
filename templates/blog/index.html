@@ -3,19 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>My Blog</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='blog/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/calculator">Calculator</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <i class="fas fa-blog"></i> MyBlog
+            </a>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#" onclick="showNewPostForm()">New Post</a>
+                <a href="#" onclick="showAbout()">About</a>
+            </div>
+        </div>
     </nav>
-    <main>
-        <h1>Blog</h1>
-        <p>Welcome to the blog section.</p>
-    </main>
+
+    <!-- Main Content -->
+    <div class="container main-container">
+        <!-- Sidebar (Mobile Hidden) -->
+        <aside class="sidebar">
+            <div class="about-me">
+                <h3><i class="fas fa-user"></i> About Me</h3>
+                <p>Welcome to my blog! I share thoughts on technology, learning, and daily life.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <i class="fas fa-pencil-alt"></i>
+                        <span id="post-count">0</span> Posts
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-tags"></i>
+                        <span id="category-count">0</span> Categories
+                    </div>
+                </div>
+            </div>
+
+            <div class="categories">
+                <h3><i class="fas fa-tags"></i> Categories</h3>
+                <div class="category-list" id="categories">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+
+            <div class="recent-posts">
+                <h3><i class="fas fa-clock"></i> Recent Posts</h3>
+                <div id="recent-posts-list">
+                    <!-- Recent posts will be loaded here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Blog Content -->
+        <main class="blog-content">
+            <!-- New Post Form (Hidden by default) -->
+            <div class="new-post-form" id="new-post-form">
+                <h2><i class="fas fa-plus-circle"></i> Create New Post</h2>
+                <form id="post-form">
+                    <input type="text" id="post-title" placeholder="Post Title" required>
+                    <input type="text" id="post-category" placeholder="Category (e.g., Tech, Life, Learning)" required>
+                    <textarea id="post-content" placeholder="Write your post here..." rows="10" required></textarea>
+                    <div class="form-actions">
+                        <button type="submit" class="btn publish-btn">
+                            <i class="fas fa-paper-plane"></i> Publish
+                        </button>
+                        <button type="button" class="btn cancel-btn" onclick="hideNewPostForm()">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- About Section (Hidden by default) -->
+            <div class="about-section" id="about-section">
+                <h2><i class="fas fa-info-circle"></i> About This Blog</h2>
+                <div class="about-content">
+                    <p>This is my personal blog where I share my thoughts, experiences, and learnings.</p>
+                    <p>Topics include:</p>
+                    <ul>
+                        <li>Technology & Programming</li>
+                        <li>Personal Development</li>
+                        <li>Daily Life Experiences</li>
+                        <li>Learning Resources</li>
+                    </ul>
+                    <p>Feel free to read, comment, and share!</p>
+                </div>
+                <button class="btn back-btn" onclick="showBlogPosts()">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </button>
+            </div>
+
+            <!-- Blog Posts Container -->
+            <div class="posts-container" id="posts-container">
+                <div class="posts-header">
+                    <h1><i class="fas fa-feather-alt"></i> Latest Posts</h1>
+                    <button class="btn new-post-btn" onclick="showNewPostForm()">
+                        <i class="fas fa-plus"></i> New Post
+                    </button>
+                </div>
+
+                <!-- Posts will be dynamically added here -->
+                <div id="blog-posts">
+                    <!-- Blog posts will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 My Blog. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="{{ url_for('static', filename='blog/js/script.js') }}"></script>
 </body>
 </html>
+
