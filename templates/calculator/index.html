@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Simple Calculator</title>
+    <!-- FIXED: Remove extra 'static' from path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/calculator">Calculator</a>
-    </nav>
-    <main>
-        <h1>Calculator</h1>
-        <p>Calculator page.</p>
-    </main>
+    <div class="container">
+        <div class="calculator">
+            <h2>Simple Calculator</h2>
+
+            <!-- Display Screen -->
+            <div class="display">
+                <input type="text" id="result" readonly value="0">
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="btn clear" onclick="clearDisplay()">C</button>
+                <button class="btn operator" onclick="appendOperator('/')">÷</button>
+                <button class="btn operator" onclick="appendOperator('*')">×</button>
+                <button class="btn operator" onclick="appendOperator('-')">−</button>
+
+                <button class="btn number" onclick="appendNumber('7')">7</button>
+                <button class="btn number" onclick="appendNumber('8')">8</button>
+                <button class="btn number" onclick="appendNumber('9')">9</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+
+                <button class="btn number" onclick="appendNumber('4')">4</button>
+                <button class="btn number" onclick="appendNumber('5')">5</button>
+                <button class="btn number" onclick="appendNumber('6')">6</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+
+                <button class="btn number" onclick="appendNumber('1')">1</button>
+                <button class="btn number" onclick="appendNumber('2')">2</button>
+                <button class="btn number" onclick="appendNumber('3')">3</button>
+                <button class="btn delete" onclick="deleteLast()">⌫</button>
+
+                <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                <button class="btn number" onclick="appendNumber('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED: Remove extra 'static' from path -->
+    <script src="{{ url_for('static', filename='calculator/js/script.js') }}"></script>
 </body>
 </html>

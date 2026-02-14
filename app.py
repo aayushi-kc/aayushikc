@@ -34,7 +34,7 @@ def blog():
 
 @app.route('/calculator')
 def calculator():
-    return "Calculator page coming soon!"
+    return render_template('calculator/index.html')
 
 
 @app.route('/api/portfolio')
